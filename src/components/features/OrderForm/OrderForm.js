@@ -6,6 +6,8 @@ import PropTypes from 'prop-types';
 import {Row, Col, Grid} from 'react-flexbox-grid';
 
 import OrderSummary from '../OrderSummary/OrderSummary';
+import pricing from '../../../data/pricing.json';
+import OrderOption from '../OrderOption/OrderOption';
 
 class OrderForm extends React.Component {
 
@@ -14,6 +16,12 @@ class OrderForm extends React.Component {
     return (
       <Grid>
         <Row>
+          {pricing.map(opt => (
+            <Col md={4} key={opt.id} >
+              <OrderOption {...opt} />
+            </Col>
+          )
+          )}
           <Col xs={12}>
             <OrderSummary cost={cost} options={options} />
           </Col>
