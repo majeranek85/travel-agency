@@ -6,20 +6,14 @@ import {formatPrice} from '../../../utils/formatPrice';
 
 //import {Row, Col, Grid} from 'react-flexbox-grid';
 
-class OrderSummary extends React.Component {
-
-  render() {
-    const {cost, options} = this.props;
-    return (
-      <h2 className={styles.component}>
-        Total:
-        <strong>
-          ${calculateTotal(formatPrice(cost), options)}
-        </strong>
-      </h2>
-    );
-  }
-}
+const OrderSummary = ({cost, options}) => (
+  <h2 className={styles.component}>
+    Total:
+    <strong>
+      ${calculateTotal(formatPrice(cost), options)}
+    </strong>
+  </h2>
+);
 
 OrderSummary.propTypes = {
   cost: PropTypes.string,
