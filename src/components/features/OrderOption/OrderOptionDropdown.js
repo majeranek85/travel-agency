@@ -11,10 +11,19 @@ const OrderOptionDropdown = ({values, required, currentValue, setOptionValue}) =
     onChange={event => setOptionValue(event.currentTarget.value)}
   >
     {required ? '' : (
-      <option key='null' value=''>---</option>
+      <option
+        key='null'
+        value=''>
+        ---
+      </option>
     )}
+
     {values.map(value => (
-      <option key={value.id} value={value.id}>{value.name} ({formatPrice(value.price)})</option>
+      <option
+        key={value.id}
+        value={value.id}>
+        {value.name} ({formatPrice(value.price)})
+      </option>
     ))}
   </select>
 );
@@ -22,7 +31,7 @@ const OrderOptionDropdown = ({values, required, currentValue, setOptionValue}) =
 OrderOptionDropdown.propTypes = {
   values: PropTypes.array,
   required: PropTypes.bool,
-  currentValue: PropTypes.object,
+  currentValue: PropTypes.string,
   setOptionValue: PropTypes.func,
 };
 

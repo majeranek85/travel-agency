@@ -13,7 +13,7 @@ const OrderForm = ({cost, options, setOrderOption}) => (
     <Row>
       {pricing.map(opt => (
         <Col md={4} key={opt.id} >
-          <OrderOption {...opt} currantValue={options[opt.id]} setOrderOption={setOrderOption} />
+          <OrderOption {...opt} currentValue={options[opt.id]} setOrderOption={setOrderOption} />
         </Col>
       )
       )}
