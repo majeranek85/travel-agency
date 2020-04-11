@@ -10,7 +10,7 @@ const OrderOptionDropdown = ({values, required, currentValue, setOptionValue}) =
     value={currentValue}
     onChange={event => setOptionValue(event.currentTarget.value)}
   >
-    {required ? '' : (
+    {!required && (
       <option
         key='null'
         value=''>
