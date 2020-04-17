@@ -11,7 +11,7 @@ describe('Component TripSummary', () => {
     expect(generatedUrl).toEqual(`/trip/${expectedId}`);
   });
 
-  it('<img> should have correct src and alt', () => {
+  it('should render <img> that has correct src and alt', () => {
     const expectedSrc = 'img.jpg';
     const expectedAlt = 'alternative text';
     const component = shallow(<TripSummary image={expectedSrc} name={expectedAlt} tags={[]}/>);
@@ -20,7 +20,7 @@ describe('Component TripSummary', () => {
     expect(component.find('img').prop('alt')).toEqual(expectedAlt);
   });
 
-  it('should render props name, cost and days correctly', () => {
+  it('should render props (name, cost and days) correctly', () => {
     const expectedName = 'togo';
     const expectedCost = '$ 20000';
     const expectedDays = 7;
@@ -31,17 +31,23 @@ describe('Component TripSummary', () => {
     expect(component.find('.details span:first-child').text()).toEqual(`${expectedDays} days`);
   });
 
-  it('should throw error without any of the props', () => {
+  it('should throw error if any of the props is missing', () => {
     expect(() => shallow(<TripSummary />)).toThrow();
   });
 
-  it('should render <span> for every tag i tags array',() => {
+  it('should render <span> for every tag in tags array',() => {
     const expectedTags = ['one', 'two', 'three'];
     const component = shallow(<TripSummary tags={expectedTags}/>);
 
-    expect(component.find('.tag').at(0).text()).toEqual(expectedTags[0]);
-    expect(component.find('.tag').at(1).text()).toEqual(expectedTags[1]);
-    expect(component.find('.tag').at(2).text()).toEqual(expectedTags[2]);
+    for(let tagId in expectedTags) {
+      expect(component.find('.tag').at(tagId).text()).toEqual(expectedTags[tagId]);
+    }
+  });
+
+  it('should not render a div if tags array is empty', () => {
+    const expectedTags = [];
+    const component = shallow(<TripSummary tags={expectedTags} />);
+    expect(component.find('.tags').exists()).toBeFalsy();
     console.log(component.debug());
   });
 
