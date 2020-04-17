@@ -20,8 +20,9 @@ class OrderOptionDate extends React.Component {
     return (
       <DatePicker
         selected={this.state.startDate}
-        onChange={this.handleChange}
+        onChange={date => this.handleChange(date)}
         dateFormat='dd/MM/yyyy'
+        minDate={this.state.startDate}
       />
     );
   }
