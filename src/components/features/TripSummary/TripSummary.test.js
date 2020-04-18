@@ -5,7 +5,7 @@ import TripSummary from './TripSummary';
 describe('Component TripSummary', () => {
   it('should generate a link to a correct url', () => {
     const expectedId = 'abc';
-    const component= shallow(<TripSummary id={expectedId} tags={[]}/>);
+    const component = shallow(<TripSummary id={expectedId} tags={[]}/>);
 
     const generatedUrl = component.find('.link').prop('to');
     expect(generatedUrl).toEqual(`/trip/${expectedId}`);
@@ -48,7 +48,7 @@ describe('Component TripSummary', () => {
     const expectedTags = [];
     const component = shallow(<TripSummary tags={expectedTags} />);
     expect(component.find('.tags').exists()).toBeFalsy();
-    console.log(component.debug());
+    //console.log(component.debug());
   });
 
 });
