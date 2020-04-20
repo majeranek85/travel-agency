@@ -22,7 +22,6 @@ const sendOrder = (options, tripCost, tripId, tripName, country) => {
     country,
     totalCost,
   };
-  console.log(options);
 
   const url = settings.db.url + '/' + settings.db.endpoint.orders;
 
