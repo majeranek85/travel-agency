@@ -7,6 +7,11 @@ const select = {
   promoDescription: '.promoDescription',
 };
 
+const mockProps = {
+  title: 'Lorem ipsum',
+  promoDescription: 'Vestibulum a gravida velit.',
+};
+
 describe('Component HappyHourAd', () => {
   /* test 1 */
   it('should render without crashing', () => {
@@ -19,5 +24,11 @@ describe('Component HappyHourAd', () => {
     const component = shallow(<HappyHourAd />);
     expect(component.exists(select.title)).toEqual(true);
     expect(component.exists(select.promoDescription)).toEqual(true);
+  });
+
+  /* test 3 */
+  it('should render correct title props in heading', () => {
+    const component = shallow(<HappyHourAd {...mockProps} />);
+    expect(component.find(select.title).text()).toEqual(mockProps.title);
   });
 });
