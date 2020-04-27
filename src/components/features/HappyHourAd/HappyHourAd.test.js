@@ -70,7 +70,7 @@ describe('Component HappyHourAd with mocked Date', () => {
 
 /* test 5 */
 const checkDescriptionAfterTime = (time, delaySeconds, expectedDescription) => {
-  it(`should show correct value ${delaySeconds} seconds after ${time}`, () => {
+  it(`should show correct value ${delaySeconds} seconds after ${time} "${expectedDescription}"`, () => {
     jest.useFakeTimers();
     global.Date = mockDate(`2019-05-14T${time}.135Z`);
 
@@ -101,4 +101,10 @@ describe('Component HappyHourAd with mocked Date and promo description', () => {
   checkDescriptionAtTime('12:00:00', mockProps.promoDescription);
   checkDescriptionAtTime('12:39:59', mockProps.promoDescription);
   checkDescriptionAtTime('13:00:00', 23 * 60 * 60 + '');
+});
+
+/* test 7 */
+describe('Component HappyHourAd with mocked Date, delay and promo description', () => {
+  checkDescriptionAfterTime('11:59:58', 3, mockProps.promoDescription);
+  checkDescriptionAfterTime('12:59:59', 1, 23 * 60 * 60 + '');
 });
