@@ -2,4 +2,14 @@
 
 .component {
   margin-bottom: $base-size;
+
+  span {
+    font-size: larger;
+  }
+
+  .standard {
+    padding-left: 44px;
+    font-size: medium;
+  }
 }
+

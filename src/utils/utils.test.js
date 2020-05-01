@@ -1,4 +1,5 @@
 import { formatTime } from './formatTime';
+import { promoPrice } from './promoPrice';
 
 describe('utils', () => {
   describe('formatTime', () => {
@@ -24,5 +25,12 @@ describe('utils', () => {
       expect(formatTime(3604)).toBe('01:00:04');
     });
 
+  });
+
+  describe('promoPrice', () => {
+
+    it('should return ull if there is no arg',() => {
+      expect(promoPrice()).toBe(null);
+    });
   });
 });
