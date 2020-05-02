@@ -29,8 +29,17 @@ describe('utils', () => {
 
   describe('promoPrice', () => {
 
-    it('should return ull if there is no arg',() => {
+    it('should return null if there is no arg',() => {
       expect(promoPrice()).toBe(null);
+    });
+
+    it('should return null if any arg is lower than zero', () => {
+      expect(promoPrice(-1, -6)).toBe(null);
+      expect(promoPrice(-2, -5)).toBe(null);
+    });
+
+    it('should return correct price number after discount', () => {
+      expect(promoPrice(200, 20)).toBe(160);
     });
   });
 });

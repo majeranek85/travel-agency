@@ -15,9 +15,11 @@ import {promoPrice} from '../../../utils/promoPrice';
 
 import styles from './Trip.scss';
 import {Grid, Row, Col} from 'react-flexbox-grid';
+import { formatPrice } from '../../../utils/formatPrice';
+import { parseOptionPrice } from '../../../utils/parseOptionPrice';
 
 
-const Trip = ({error, name, image, cost, days, description, country, intro, id}) => {
+const Trip = ({error, name, image, cost, days, description, country, intro, id, discount = 20}) => {
   if(error) return <NotFound />;
   else return (
     <Section>
@@ -37,8 +39,8 @@ const Trip = ({error, name, image, cost, days, description, country, intro, id})
               <List variant='light'>
                 <ListItem title={`<strong>Duration:</strong> ${days} days`} icon='calendar-alt' />
                 <ListItem
-                  title={`<strong>Price from: ${promoPrice()} </strong>`}
-                  subtitle={`Standard price: ${cost}`}
+                  title={`<strong>Price from: ${formatPrice(promoPrice(cost, discount))} </strong>`}
+                  subtitle={`Standard price: ${formatPrice(parseOptionPrice(cost).value)}`}
                   icon='money-bill-wave'
                 />
               </List>
