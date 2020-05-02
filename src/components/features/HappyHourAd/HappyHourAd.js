@@ -8,7 +8,7 @@ class HappyHourAd extends React.Component {
   constructor() {
     super();
 
-    setInterval(() => this.forceUpdate(), 1000);
+    this.interval = setInterval(() => this.forceUpdate(), 1000);
   }
 
   getCountdownTime() {
@@ -20,6 +20,10 @@ class HappyHourAd extends React.Component {
     }
 
     return Math.round((nextNoon.getTime() - currentTime.getTime())/1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
 
   render() {
