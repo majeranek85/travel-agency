@@ -19,7 +19,7 @@ import { formatPrice } from '../../../utils/formatPrice';
 import { parseOptionPrice } from '../../../utils/parseOptionPrice';
 
 
-const Trip = ({error, name, image, cost, days, description, country, intro, id, discount = 20}) => {
+const Trip = ({error, name, image, cost, days, description, country, intro, id, discount}) => {
   if(error) return <NotFound />;
   else return (
     <Section>
@@ -94,6 +94,7 @@ Trip.propTypes = {
   days: PropTypes.number,
   description: PropTypes.string,
   country: PropTypes.object,
+  discount: PropTypes.number,
 };
 
 export default Trip;

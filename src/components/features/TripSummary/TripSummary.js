@@ -3,8 +3,11 @@ import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import styles from './TripSummary.scss';
 import {Col} from 'react-flexbox-grid';
+import {parseOptionPrice} from '../../../utils/parseOptionPrice';
+import {formatPrice} from '../../../utils/formatPrice';
+import {promoPrice} from '../../../utils/promoPrice';
 
-const TripSummary = ({id, image, name, cost, days, tags}) => (
+const TripSummary = ({id, image, name, cost, days, tags, discount}) => (
   <Col xs={12} sm={6} lg={4} className={styles.column}>
     <Link to={`/trip/${id}`} className={styles.link}>
       <article className={styles.component}>
@@ -12,7 +15,8 @@ const TripSummary = ({id, image, name, cost, days, tags}) => (
         <h3 className={styles.title}>{name}</h3>
         <div className={styles.details}>
           <span>{days} days</span>
-          <span>from {cost}</span>
+          <span>from {formatPrice(promoPrice(cost, discount))}</span>
+          <span> Standard price: {formatPrice(parseOptionPrice(cost).value)}</span>
         </div>
         {tags == false ? null :(
           <div className={styles.tags}>
@@ -34,6 +38,7 @@ TripSummary.propTypes = {
   cost: PropTypes.string,
   days: PropTypes.number,
   tags: PropTypes.array,
+  discount: PropTypes,
 };
 
 export default TripSummary;
