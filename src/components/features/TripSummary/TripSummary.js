@@ -22,9 +22,9 @@ const TripSummary = ({id, image, name, cost, days, tags, discount=20}) => {
           <div className={styles.details}>
             <span>{days} days</span>
             <span className={styles.promo}>
-              {currentTime == 20
-                ?(cost && discount) && (`Happy Hour price from: ${promoPrice(formatPrice(cost), discount)}`)
-                : null
+              {//currentTime == 12
+                /*?*/(cost && discount) && (`Happy Hour price from: ${promoPrice(formatPrice(cost), discount)}`)
+                //: null
               }
             </span>
             <span className={styles.standard}>{(cost) && (`Standard price: ${formatPrice(parseOptionPrice(cost).value)}`)}</span>
