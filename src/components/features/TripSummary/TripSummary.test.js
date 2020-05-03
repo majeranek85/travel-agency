@@ -22,13 +22,17 @@ describe('Component TripSummary', () => {
 
   it('should render props (name, cost and days) correctly', () => {
     const expectedName = 'togo';
-    const expectedCost = '$ 20000';
+    const expectedCost = '$2,000';
+    const expectedDiscount = 20;
     const expectedDays = 7;
-    const component = shallow(<TripSummary name={expectedName} cost={expectedCost} days={expectedDays} tags={[]}/>);
+    const expectedPromoPrice = '$1,600';
+    const component = shallow(<TripSummary name={expectedName} cost={expectedCost} discount={expectedDiscount} days={expectedDays}  tags={[]}/>);
 
     expect(component.find('.title').text()).toEqual(expectedName);
-    expect(component.find('.details span:last-child').text()).toEqual(`from ${expectedCost}`);
     expect(component.find('.details span:first-child').text()).toEqual(`${expectedDays} days`);
+    expect(component.find('.details .promo').text()).toEqual(`Happy Hour price from: ${expectedPromoPrice}`);
+    expect(component.find('.details .standard').text()).toEqual(`Standard price: ${expectedCost}`);
+    //console.log(component.debug());
   });
 
   it('should throw error if any of the props is missing', () => {

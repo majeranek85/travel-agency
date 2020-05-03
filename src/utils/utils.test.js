@@ -39,7 +39,7 @@ describe('utils', () => {
     });
 
     it('should return correct price number after discount', () => {
-      expect(promoPrice(200, 20)).toBe(160);
+      expect(promoPrice(200, 20)).toBe('$160');
     });
   });
 });
